@@ -4,3 +4,8 @@ GET {{Api_HostAddress}}/api/students/
 Accept: application/json
 
 ###
+
+GET {{Api_HostAddress}}/api/courses/
+Accept: application/json
+
+###

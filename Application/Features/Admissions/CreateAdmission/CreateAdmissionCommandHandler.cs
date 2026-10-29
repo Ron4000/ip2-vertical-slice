@@ -12,7 +12,7 @@ public sealed class CreateAdmissionCommandHandler(IAppDbContext dbContext)
     public async Task<Result<CreateAdmissionResponse>> HandleAsync(
         CreateAdmissionCommand command,
         CancellationToken cancellationToken = default)
-    {
+    { //Break point B
         var student = await dbContext.Students
             .FirstOrDefaultAsync(s => s.Id == command.StudentId, cancellationToken);
 
@@ -47,8 +47,8 @@ public sealed class CreateAdmissionCommandHandler(IAppDbContext dbContext)
             });
         }
 
-        dbContext.Admissions.Add(admission);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        dbContext.Admissions.Add(admission); //break point C
+        await dbContext.SaveChangesAsync(cancellationToken); //break point D
 
         var response = new CreateAdmissionResponse(
             admission.Id,
